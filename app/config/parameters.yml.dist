@@ -17,3 +17,14 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
+
+    imagine_driver: imagick
+
+    amazon.s3_key:                          edit me
+    amazon.s3_secret:                       edit me
+    amazon.s3_bucket:                       edit me
+    amazon.s3_cache_bucket:                 edit me
+    amazon.s3_region:                       eu-west-1
+
+    gaufrette_image_adapter_service:        gaufrette.image_s3_adapter
+    gaufrette_cv_adapter_service:           gaufrette.cv_s3_adapter

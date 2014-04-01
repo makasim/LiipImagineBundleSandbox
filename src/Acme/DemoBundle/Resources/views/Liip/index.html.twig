@@ -1,0 +1,21 @@
+<div style="float: left; margin-right: 15px; width: 220px">
+    <p>Default</p>
+    <img src="{{ '/images/dream.jpg' | imagine_filter('thumbnail_default') }}" />
+</div>
+<div style="float: left; margin-right: 15px; width: 220px">
+    <p>WebPath</p>
+    {% set runtimeConfig = {"thumbnail": {"size": [50, 50] }} %}
+    <img src="{{ '/images/dream.jpg' | imagine_filter('thumbnail_web_path', runtimeConfig) }}" />
+</div>
+<div style="float: left; margin-right: 15px; width: 220px">
+    <p>Aws S3</p>
+    <img src="{{ 'dream.jpg' | imagine_filter('thumbnail_aws_s3') }}" />
+</div>
+<div style="float: left; margin-right: 15px; width: 220px">
+    <p>Amazon S3</p>
+    <img src="{{ 'dream.jpg' | imagine_filter('thumbnail_amazon_s3') }}" />
+</div>
+<div style="clear: both">
+    <p>No cache</p>
+    <img src="{{ '/images/dream.jpg' | imagine_filter('thumbnail_no_cache') }}" />
+</div>

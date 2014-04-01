@@ -1,0 +1,79 @@
+knp_gaufrette:
+    adapters:
+        image:
+            aws_s3:
+                service_id:   liip_imagine.cache.resolver.aws_s3_image.client
+                bucket_name:  %amazon.s3_bucket%
+                options:      { acl: public-read }
+
+    filesystems:
+        image:
+            adapter:          image
+
+    stream_wrapper:
+        protocol:             gaufrette
+        filesystems:          [image]
+
+liip_imagine:
+    loaders:
+        stream_image:
+            stream:
+               wrapper: gaufrette://image/
+
+    resolvers:
+        web_path:
+            web_path: ~
+        aws_s3_image:
+            aws_s3:
+                client_config:
+                    key:    %amazon.s3_key%
+                    secret: %amazon.s3_secret%
+                    region: %amazon.s3_region%
+                bucket:     %amazon.s3_cache_bucket%
+
+    driver: gd
+
+    filter_sets:
+        thumbnail_default:
+            cache: default
+            data_loader: default
+            filters:
+                thumbnail: { size: [223, 223], mode: inset }
+
+        thumbnail_web_path:
+            cache: web_path
+            data_loader: default
+            filters:
+                thumbnail: { size: [223, 223], mode: inset }
+
+        thumbnail_aws_s3:
+            cache: aws_s3_image
+            data_loader: stream_image
+            filters:
+                thumbnail: { size: [223, 223], mode: inset }
+
+        thumbnail_amazon_s3:
+            cache: amazon_s3_image
+            data_loader: stream_image
+            filters:
+                thumbnail: { size: [223, 223], mode: inset }
+
+        thumbnail_no_cache:
+            cache: no_cache
+            filters: []
+
+services:
+    amazon.s3_client:
+        class: AmazonS3
+        arguments:
+            -
+                key: %amazon.s3_key%
+                secret: %amazon.s3_secret%
+
+    media.liip_imagine.cache.resolver.amazon_s3_image:
+        class: Liip\ImagineBundle\Imagine\Cache\Resolver\AmazonS3Resolver
+        arguments:
+            - @amazon.s3_client
+            - %amazon.s3_cache_bucket%
+        tags:
+            - { name: 'liip_imagine.cache.resolver', resolver: 'amazon_s3_image' }

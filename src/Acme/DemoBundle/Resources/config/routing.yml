@@ -10,3 +10,8 @@ _demo:
     resource: "@AcmeDemoBundle/Controller/DemoController.php"
     type:     annotation
     prefix:   /demo
+
+_demo_liip:
+    resource: "@AcmeDemoBundle/Controller/LiipController.php"
+    type:     annotation
+    prefix:   /demo
