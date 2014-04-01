@@ -20,6 +20,8 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
         "liip/imagine-bundle": "1.0.*@dev",
+        "aws/aws-sdk-php": "~2",
+        "amazonwebservices/aws-sdk-for-php": "~1",
         "knplabs/knp-gaufrette-bundle": "*@dev",
         "knplabs/gaufrette": "*@dev"
     },
