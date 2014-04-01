@@ -1,3 +1,9 @@
+Liip Imagine Bundle Sandbox
+===========================
+
+Install it as any other symfony standard app. Access `/demo/liip`. 
+
+
 Symfony Standard Edition
 ========================
 
