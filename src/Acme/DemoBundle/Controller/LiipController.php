@@ -19,6 +19,7 @@ class LiipController extends Controller
             'thumbnail_web_path',
             'thumbnail_amazon_s3',
             'thumbnail_aws_s3',
+            'thumbnail_aws_s3_proxy',
             'thumbnail_no_cache',
         ));
 
