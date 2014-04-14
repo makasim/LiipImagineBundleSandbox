@@ -19,10 +19,12 @@ class LiipController extends Controller
             'thumbnail_web_path',
             'thumbnail_amazon_s3',
             'thumbnail_aws_s3',
+            'thumbnail_aws_s3_proxy',
             'thumbnail_no_cache',
         ));
 
         return array(
+            'aws_s3_proxy_image_url' => $this->getCacheManager()->resolve('dream.jpg', 'thumbnail_aws_s3_proxy'),
             'runtimeConfig' => array(
                 'thumbnail' => array(
                     'size' => array(50, 50)

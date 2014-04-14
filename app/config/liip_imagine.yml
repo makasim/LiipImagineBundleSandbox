@@ -16,6 +16,8 @@ knp_gaufrette:
 
 liip_imagine:
     loaders:
+        default:
+            filesystem: ~
         stream_image:
             stream:
                wrapper: gaufrette://image/
@@ -30,6 +32,14 @@ liip_imagine:
                     secret: %amazon.s3_secret%
                     region: %amazon.s3_region%
                 bucket:     %amazon.s3_cache_bucket%
+        aws_s3_image_proxy:
+            aws_s3:
+                client_config:
+                    key:    %amazon.s3_key%
+                    secret: %amazon.s3_secret%
+                    region: %amazon.s3_region%
+                bucket:     %amazon.s3_cache_bucket%
+                proxies: ['http://amazingdomain.com']
 
     driver: gd
 
@@ -48,6 +58,12 @@ liip_imagine:
 
         thumbnail_aws_s3:
             cache: aws_s3_image
+            data_loader: stream_image
+            filters:
+                thumbnail: { size: [223, 223], mode: inset }
+
+        thumbnail_aws_s3_proxy:
+            cache: aws_s3_image_proxy
             data_loader: stream_image
             filters:
                 thumbnail: { size: [223, 223], mode: inset }
