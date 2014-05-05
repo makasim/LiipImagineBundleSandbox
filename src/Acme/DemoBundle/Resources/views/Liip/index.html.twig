@@ -1,25 +1,25 @@
 <div style="float: left; margin-right: 15px; width: 220px">
-    <p><b>Default</b></p>
+    <p><b>Default (<a href="{{ '/images/dream.jpg' | imagine_filter('thumbnail_default') }}">Source</a>)</b></p>
     <img src="{{ '/images/dream.jpg' | imagine_filter('thumbnail_default') }}" />
 </div>
 <div style="float: left; margin-right: 15px; width: 220px">
-    <p><b>WebPath</b></p>
     {% set runtimeConfig = {"thumbnail": {"size": [50, 50] }} %}
+    <p><b>WebPath + Runtime (<a href="{{ '/images/dream.jpg' | imagine_filter('thumbnail_web_path', runtimeConfig) }}">Source</a>)</b></p>
     <img src="{{ '/images/dream.jpg' | imagine_filter('thumbnail_web_path', runtimeConfig) }}" />
 </div>
 <div style="float: left; margin-right: 15px; width: 220px">
-    <p><b>Aws S3</b></p>
+    <p><b>Aws S3 (<a href="{{ 'dream.jpg' | imagine_filter('thumbnail_aws_s3') }}">Source</a>)</b></p>
     <img src="{{ 'dream.jpg' | imagine_filter('thumbnail_aws_s3') }}" />
 </div>
 <div style="float: left; margin-right: 15px; width: 220px">
-    <p><b>Amazon S3</b></p>
+    <p><b>Amazon S3 (<a href="{{ 'dream.jpg' | imagine_filter('thumbnail_amazon_s3') }}">Source</a>)</b></p>
     <img src="{{ 'dream.jpg' | imagine_filter('thumbnail_amazon_s3') }}" />
 </div>
 <div style="float: left; margin-right: 15px;">
-    <p><b>Aws S3 Proxy</b> (URL)</p>
-    <p>{{ aws_s3_proxy_image_url }}</p>
+    <p><b>Aws S3 Proxy (<a href="{{ aws_s3_proxy_image_url }}">Source</a>)</b></p>
+    {{ aws_s3_proxy_image_url }}
 </div>
 <div style="clear: both">
-    <p><b>No cache</b></p>
+    <p><b>No cache (<a href="{{ '/images/dream.jpg' | imagine_filter('thumbnail_no_cache') }}">Source</a>)</b></p>
     <img src="{{ '/images/dream.jpg' | imagine_filter('thumbnail_no_cache') }}" />
 </div>
